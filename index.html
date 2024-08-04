@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>WebGL Grid</title>
+    </head>
+    <body>
+
+        <!-- file upload -->
+        <div id="drop-zone">
+            <div id="file-upload-text"></div>
+            <input type="file" id="file-input" hidden>
+        </div>
+
+        <!-- stitch preview -->
+        <canvas id="glCanvas" width="600" height="600"></canvas>
+
+        <!-- grid size slider -->
+        <div id="controls">
+            <div class="control-group">
+                <label for="gridSize">Stitches across: <span id="gridSizeValue">050</span></label>
+                <input type="range" id="gridSize" min="1" max="300" value="50">
+            </div>
+            <div class="control-group">
+                <label for="numColors">Number of colors: <span id="numColorsValue">10</span></label>
+                <input type="range" id="numColors" min="1" max="99" value="10">
+            </div>
+        </div>
+        <button id="saveButton">Save as PDF</button>
+
+        <!-- scripts -->
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
