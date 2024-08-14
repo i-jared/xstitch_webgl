@@ -8,7 +8,7 @@ import { generatePDF } from "./pdf_gen.js";
 // #####################################
 
 const canvas = document.getElementById("glCanvas");
-const gl = canvas.getContext("webgl2", {preserveDrawingBuffer: true});
+const gl = canvas.getContext("webgl2", { preserveDrawingBuffer: true });
 
 var pictureData = new Float32Array(0);
 var scaledData = new Float32Array(0);
@@ -166,7 +166,15 @@ function _redraw(positions, colorData) {
   // Create a buffer to store the pixel data
   let exportData = new Uint8Array(canvas.height * canvas.width * 4); // 4 bytes per pixel (RGBA)
   // Read the pixels from the framebuffer
-  gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, exportData);
+  gl.readPixels(
+    0,
+    0,
+    canvas.width,
+    canvas.height,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    exportData
+  );
   // Reverse exportData while maintaining RGBA order
   let reversedData = new Uint8Array(exportData.length);
   for (let i = 0; i < canvas.height; i++) {
@@ -182,7 +190,11 @@ function _redraw(positions, colorData) {
   exportData = reversedData;
 
   // Create an ImageData object
-  finalImageData = new ImageData(new Uint8ClampedArray(exportData), canvas.width, canvas.height);
+  finalImageData = new ImageData(
+    new Uint8ClampedArray(exportData),
+    canvas.width,
+    canvas.height
+  );
 
   _checkGLError(gl, "drawArraysInstanced");
 }
@@ -301,5 +313,5 @@ export function clearGrid() {
 }
 
 export function save() {
-  generatePDF(currWidth, currHeight, savedColors, finalImageData);
+  generatePDF(currHeight, currWidth, savedColors, finalImageData, colorData);
 }
