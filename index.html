@@ -3,21 +3,97 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>WebGL Grid</title>
+        <title>Radical WebGL Grid</title>
+        <style>
+            body {
+                background: #ff00ff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==') repeat;
+                font-family: 'Comic Sans MS', cursive;
+                color: #00ff00;
+                text-shadow: 2px 2px #ff0000;
+            }
+            #drop-zone {
+                width: 200px;
+                height: 50px;
+                border: 4px solid #00ffff;
+                border-radius: 20px;
+                text-align: center;
+                padding: 20px;
+                margin: 20px auto;
+                cursor: pointer;
+                background: #000000;
+                box-shadow: 0 0 10px #00ffff;
+            }
+            #drop-zone.dragover {
+                background-color: #00ffff;
+                color: #000000;
+            }
+            #glCanvas {
+                border: 5px solid #ffff00;
+                display: block;
+                margin: 20px auto;
+                box-shadow: 0 0 20px #ffff00;
+            }
+            #controls {
+                width: 600px;
+                margin: 20px auto;
+                background: rgba(0,0,0,0.7);
+                padding: 20px;
+                border-radius: 20px;
+                border: 3px solid #00ff00;
+            }
+            .control-group {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                justify-content: space-between;
+            }
+            input[type="range"] {
+                -webkit-appearance: none;
+                width: 70%;
+                height: 15px;
+                background: #00ff00;
+                outline: none;
+                border-radius: 15px;
+            }
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background: #ff00ff;
+                cursor: pointer;
+                border-radius: 50%;
+            }
+            #saveButton {
+                display: block;
+                margin: 20px auto;
+                padding: 10px 20px;
+                font-size: 20px;
+                background-color: #ffff00;
+                color: #000000;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                font-weight: bold;
+                text-transform: uppercase;
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+            #saveButton:hover {
+                background-color: #00ffff;
+            }
+        </style>
     </head>
     <body>
-
-        <!-- file upload -->
         <div id="drop-zone">
-            <div id="file-upload-text"></div>
+            <div id="file-upload-text">Drop your radical file here!</div>
             <input type="file" id="file-input" hidden>
         </div>
-
-        <!-- stitch preview -->
         <canvas id="glCanvas" width="600" height="600"></canvas>
-
-        <!-- grid size slider -->
         <div id="controls">
             <div class="control-group">
                 <label for="gridSize">Stitches across: <span id="gridSizeValue">050</span></label>
@@ -28,9 +104,7 @@
                 <input type="range" id="numColors" min="1" max="99" value="10">
             </div>
         </div>
-        <button id="saveButton">Save as PDF</button>
-
-        <!-- scripts -->
+        <button id="saveButton">Save as Totally Rad PDF</button>
         <script type="module" src="main.js"></script>
     </body>
 </html>
