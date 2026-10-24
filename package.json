@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "jspdf": "^2.5.1"
+    "express": "^4.20.0",
+    "jspdf": "^4.2.1"
   },
   "devDependencies": {
-    "vite": "^5.3.5"
+    "vite": "^6.4.4"
   }
 }
